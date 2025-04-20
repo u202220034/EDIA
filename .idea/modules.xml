@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/EDIA.iml" filepath="$PROJECT_DIR$/.idea/EDIA.iml" />
+      <module fileurl="file://$PROJECT_DIR$/EDIA/EDIA.iml" filepath="$PROJECT_DIR$/EDIA/EDIA.iml" />
     </modules>
   </component>
 </project>
