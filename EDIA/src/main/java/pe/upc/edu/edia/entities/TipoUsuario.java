@@ -3,36 +3,39 @@ package pe.upc.edu.edia.entities;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="TipoUsuario")
+@Table(name="TipoUsuario", uniqueConstraints = {@UniqueConstraint(columnNames = {"user_id", "tipoUsuario"})})
 public class TipoUsuario {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private int idTipoUsuario;
+    private Long id;
 
-    @Column(name = "nombreTipoUsuario", nullable = false, length = 30)
-    private String nombreTipoUsuario;
+    private String tipoUsuario;
 
-    public TipoUsuario() {
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private Usuario usuario;
+
+    public Long getId() {
+        return id;
     }
 
-    public TipoUsuario(int idTipoUsuario, String nombreTipoUsuario) {
-        this.idTipoUsuario = idTipoUsuario;
-        this.nombreTipoUsuario = nombreTipoUsuario;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public int getIdTipoUsuario() {
-        return idTipoUsuario;
+    public String getTipoUsuario() {
+        return tipoUsuario;
     }
 
-    public void setIdTipoUsuario(int idTipoUsuario) {
-        this.idTipoUsuario = idTipoUsuario;
+    public void setTipoUsuario(String tipoUsuario) {
+        this.tipoUsuario = tipoUsuario;
     }
 
-    public String getNombreTipoUsuario() {
-        return nombreTipoUsuario;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public void setNombreTipoUsuario(String nombreTipoUsuario) {
-        this.nombreTipoUsuario = nombreTipoUsuario;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }
