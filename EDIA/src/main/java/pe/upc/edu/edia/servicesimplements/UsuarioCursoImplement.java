@@ -33,4 +33,9 @@ public class UsuarioCursoImplement implements IUsuarioCursoService {
         return ucR.cantidadEstudiantesporCurso();
     }
 
+    @Override
+    public List<String[]> porcentajeCompletado() {
+        return ucR.porcentajeCompletado();
+    }
+
 }

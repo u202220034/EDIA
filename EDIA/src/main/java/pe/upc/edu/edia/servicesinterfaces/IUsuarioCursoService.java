@@ -12,5 +12,6 @@ public interface IUsuarioCursoService {
     public void update(UsuarioCurso ucs);
     public void delete(int idUsuarioCurso);
     public List<String[]> cantidadusuarioxcurso();
+    public List<String[]> porcentajeCompletado();
 
 }

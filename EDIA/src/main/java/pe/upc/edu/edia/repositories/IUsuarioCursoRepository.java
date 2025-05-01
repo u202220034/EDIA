@@ -22,5 +22,17 @@ public interface IUsuarioCursoRepository extends JpaRepository<UsuarioCurso,Inte
             "    cantidad_estudiantes DESC",nativeQuery = true)
     public List<String[]> cantidadEstudiantesporCurso();
 
-
+    @Query(value = "SELECT \n" +
+            "    u.username,\n" +
+            "    c.nombre_curso,\n" +
+            "    uc.estatus_curso || '%' AS porcentaje_completado\n" +
+            "FROM \n" +
+            "    usuario_curso uc\n" +
+            "JOIN \n" +
+            "    usuario u ON uc.id_usuario = u.id_usuario\n" +
+            "JOIN \n" +
+            "    curso c ON uc.id_curso = c.id_curso\n" +
+            "WHERE \n" +
+            "    uc.estatus_curso >= 100", nativeQuery = true)
+    public List<String[]> porcentajeCompletado();
 }
