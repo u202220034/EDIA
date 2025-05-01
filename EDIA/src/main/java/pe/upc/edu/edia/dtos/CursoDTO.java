@@ -13,8 +13,6 @@ public class CursoDTO {
 
     private String Descripcion;
 
-    private BigDecimal Estatus_Curso;
-
     private Categoria categoria;
 
     public int getIdCurso() {
@@ -39,14 +37,6 @@ public class CursoDTO {
 
     public void setDescripcion(String descripcion) {
         Descripcion = descripcion;
-    }
-
-    public BigDecimal getEstatus_Curso() {
-        return Estatus_Curso;
-    }
-
-    public void setEstatus_Curso(BigDecimal estatus_Curso) {
-        Estatus_Curso = estatus_Curso;
     }
 
     public Categoria getCategoria() {

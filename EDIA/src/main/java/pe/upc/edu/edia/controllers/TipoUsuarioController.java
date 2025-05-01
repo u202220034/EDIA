@@ -2,16 +2,19 @@ package pe.upc.edu.edia.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import pe.upc.edu.edia.dtos.CantidadEstudiantesporCursoDTO;
 import pe.upc.edu.edia.dtos.TipoUsuarioDTO;
 import pe.upc.edu.edia.entities.TipoUsuario;
 import pe.upc.edu.edia.servicesinterfaces.ITipoUsuarioService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/tipousuario")
+@RequestMapping("/tipousuarios")
 public class TipoUsuarioController {
     @Autowired
     private ITipoUsuarioService tuS;
@@ -42,5 +45,7 @@ public class TipoUsuarioController {
     }
     @DeleteMapping("/{idTipoUsuario}")
     public void eliminar(@PathVariable("idTipoUsuario") int idTipoUsuario){ tuS.delete(idTipoUsuario); }
+
+
 
 }

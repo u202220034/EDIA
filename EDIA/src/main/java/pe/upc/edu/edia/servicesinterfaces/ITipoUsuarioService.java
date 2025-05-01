@@ -12,4 +12,6 @@ public interface ITipoUsuarioService {
     public TipoUsuario listId(int idTipoUsuario);
     public void update(TipoUsuario tpus);
     public void delete(int idTipoUsuario);
+
+
 }

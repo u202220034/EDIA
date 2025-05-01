@@ -3,6 +3,7 @@ package pe.upc.edu.edia.dtos;
 import pe.upc.edu.edia.entities.Curso;
 import pe.upc.edu.edia.entities.Usuario;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 public class UsuarioCursoDTO {
@@ -11,6 +12,7 @@ public class UsuarioCursoDTO {
     private Date FechaInicio;
     private Usuario usuario;
     private Curso curso;
+    private BigDecimal Estatus_Curso;
 
     public int getIdUsuarioCurso() {
         return idUsuarioCurso;
@@ -42,5 +44,13 @@ public class UsuarioCursoDTO {
 
     public void setCurso(Curso curso) {
         this.curso = curso;
+    }
+
+    public BigDecimal getEstatus_Curso() {
+        return Estatus_Curso;
+    }
+
+    public void setEstatus_Curso(BigDecimal estatus_Curso) {
+        Estatus_Curso = estatus_Curso;
     }
 }
