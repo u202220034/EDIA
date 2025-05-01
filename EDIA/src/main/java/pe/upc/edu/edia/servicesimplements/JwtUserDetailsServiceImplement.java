@@ -21,11 +21,11 @@ public class JwtUserDetailsServiceImplement implements UserDetailsService {
 
 
     @Override
-    public UserDetails loadUserByUsername(String usuario) throws UsernameNotFoundException {
-        Usuario usu = repo.findOneByUsuario(usuario);
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        Usuario usu = repo.findOneByUsername(username);
 
         if (usu == null) {
-            throw new UsernameNotFoundException(String.format("User not exists", usuario));
+            throw new UsernameNotFoundException(String.format("User not exists", username));
         }
 
         List<GrantedAuthority> tipousuario = new ArrayList<>();
@@ -34,7 +34,7 @@ public class JwtUserDetailsServiceImplement implements UserDetailsService {
             tipousuario.add(new SimpleGrantedAuthority(tipoUsuario.getTipoUsuario()));
         });
 
-        UserDetails ud = new org.springframework.security.core.userdetails.User(usu.getUsuario(), usu.getPassword(), tipousuario);
+        UserDetails ud = new org.springframework.security.core.userdetails.User(usu.getUsername(), usu.getPassword(), tipousuario);
 
         return ud;
     }

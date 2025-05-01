@@ -4,7 +4,7 @@ import pe.upc.edu.edia.entities.TipoUsuario;
 
 public class UsuarioDTO {
     private int idUsuario;
-    private String usuario;
+    private String username;
     private String password;
     private String nombre;
     private String apellidos;
@@ -21,12 +21,12 @@ public class UsuarioDTO {
         this.idUsuario = idUsuario;
     }
 
-    public String getUsuario() {
-        return usuario;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {

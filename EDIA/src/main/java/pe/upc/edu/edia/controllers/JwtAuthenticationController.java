@@ -31,15 +31,15 @@ public class JwtAuthenticationController {
 
     @PostMapping("/login")
     public ResponseEntity<JwtResponse> login(@RequestBody JwtRequest req) throws Exception {
-        authenticate(req.getUsuario(), req.getPassword());
-        final UserDetails userDetails = userDetailsServiceImplement.loadUserByUsername(req.getUsuario());
+        authenticate(req.getUsername(), req.getPassword());
+        final UserDetails userDetails = userDetailsServiceImplement.loadUserByUsername(req.getUsername());
         final String token = jwtTokenUtil.generateToken(userDetails);
         return ResponseEntity.ok(new JwtResponse(token));
     }
 
-    private void authenticate(String usuario, String password) throws Exception {
+    private void authenticate(String username, String password) throws Exception {
         try {
-            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(usuario, password));
+            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
         } catch (DisabledException e) {
             throw new Exception("USER_DISABLED", e);
         } catch (BadCredentialsException e) {

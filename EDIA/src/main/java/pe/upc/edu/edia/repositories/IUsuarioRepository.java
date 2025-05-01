@@ -9,10 +9,10 @@ import org.springframework.stereotype.Repository;
 import pe.upc.edu.edia.entities.Usuario;
 @Repository
 public interface IUsuarioRepository extends JpaRepository<Usuario, Integer> {
-    public Usuario findOneByUsuario(String usuario);
+    public Usuario findOneByUsername(String usuario);
 
-    @Query("select count(u.usuario) from Usuario u where u.usuario =:usuario")
-    public int buscarUsername(@Param("usuario") String nombre);
+    @Query("select count(u.username) from Usuario u where u.username =:username")
+    public int buscarUsername(@Param("username") String nombre);
 
 
     @Transactional
