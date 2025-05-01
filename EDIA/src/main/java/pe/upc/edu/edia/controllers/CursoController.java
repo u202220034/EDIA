@@ -1,6 +1,7 @@
 package pe.upc.edu.edia.controllers;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.upc.edu.edia.dtos.CursoDTO;
 import pe.upc.edu.edia.entities.Curso;
@@ -10,11 +11,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/curso")
+@RequestMapping("/cursos")
 public class CursoController {
     @Autowired
     private ICursoService curS;
     @GetMapping
+    @PreAuthorize("hasAuthority('ADMIN')")
     public List<CursoDTO> Listar(){
         return curS.list().stream().map(x -> {
             ModelMapper m = new ModelMapper();

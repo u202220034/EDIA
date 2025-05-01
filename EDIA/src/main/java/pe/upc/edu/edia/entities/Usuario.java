@@ -3,6 +3,7 @@ package pe.upc.edu.edia.entities;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "Usuario")
@@ -10,10 +11,10 @@ public class Usuario implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idUsuario;
+    private long idUsuario;
 
-    @Column(name = "Usuario", length = 30, unique = true, nullable = false)
-    private String usuario;
+    @Column(length = 30, unique = true, nullable = false)
+    private String username;
 
     @Column(name = "Password", length = 200, nullable = false)
     private String password;
@@ -33,40 +34,24 @@ public class Usuario implements Serializable {
     @Column(name = "Verificacion", nullable = false)
     private Boolean verificacion;
 
-    @ManyToOne
-    @JoinColumn(name = "idTipoUsuario")
-    private TipoUsuario tipoUsuario;
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
+    private List<TipoUsuario> tipoUsuarios;
 
-    public Usuario() {
-    }
-
-    public Usuario(int idUsuario, String usuario, String password, String nombre, String apellidos, String correo, String dni, Boolean verificacion, TipoUsuario tipoUsuario)
-    {
-        this.idUsuario = idUsuario;
-        this.usuario = usuario;
-        this.password = password;
-        this.nombre = nombre;
-        this.apellidos = apellidos;
-        this.correo = correo;
-        this.dni = dni;
-        this.verificacion = verificacion;
-        this.tipoUsuario = tipoUsuario;
-    }
-
-    public int getIdUsuario() {
+    public long getIdUsuario() {
         return idUsuario;
     }
 
-    public void setIdUsuario(int idUsuario) {
+    public void setIdUsuario(long idUsuario) {
         this.idUsuario = idUsuario;
     }
 
-    public String getUsuario() {
-        return usuario;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -117,12 +102,11 @@ public class Usuario implements Serializable {
         this.verificacion = verificacion;
     }
 
-    public TipoUsuario getTipoUsuario() {
-        return tipoUsuario;
+    public List<TipoUsuario> getTipoUsuarios() {
+        return tipoUsuarios;
     }
 
-    public void setTipoUsuario(TipoUsuario tipoUsuario) {
-        this.tipoUsuario = tipoUsuario;
+    public void setTipoUsuarios(List<TipoUsuario> tipoUsuarios) {
+        this.tipoUsuarios = tipoUsuarios;
     }
-
 }
