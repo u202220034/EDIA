@@ -18,7 +18,7 @@ RUN mvn clean package -DskipTests -B
 
 # Fase de ejecución
 FROM amazoncorretto:17-alpine-jdk
-WORKDIR /app
+WORKDIR /EDIA
 
 # Copia el JAR (verifica el nombre exacto en tu target/)
 COPY --from=build /EDIA/target/EDIA-0.0.1-SNAPSHOT.jar app.jar
