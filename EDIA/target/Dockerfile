@@ -1,6 +1,6 @@
 # Fase de construcción - Usamos Amazon Corretto para Maven
 FROM amazoncorretto:17-alpine AS build
-WORKDIR /app
+WORKDIR /EDIA
 
 # Instalamos Maven manualmente (versión compatible)
 RUN apk add --no-cache maven
@@ -21,7 +21,7 @@ FROM amazoncorretto:17-alpine-jdk
 WORKDIR /app
 
 # Copia el JAR (verifica el nombre exacto en tu target/)
-COPY --from=build /app/target/EDIA-0.0.1-SNAPSHOT.jar app.jar
+COPY --from=build /EDIA/target/EDIA-0.0.1-SNAPSHOT.jar app.jar
 
 # Puerto expuesto (ajusta según tu aplicación)
 EXPOSE 8083
