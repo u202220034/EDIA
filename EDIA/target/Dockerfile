@@ -1,9 +1,29 @@
-FROM maven:3.9.5-eclipse-temurin-17 AS build
+# Fase de construcción - Usamos Amazon Corretto para Maven
+FROM amazoncorretto:17-alpine AS build
 WORKDIR /app
-COPY . .
-RUN mvn clean package -DskipTests
 
+# Instalamos Maven manualmente (versión compatible)
+RUN apk add --no-cache maven
+
+# 1. Copia solo el POM primero para cachear dependencias
+COPY pom.xml .
+# Descarga dependencias (se cachea si el POM no cambia)
+RUN mvn dependency:go-offline -B
+
+# 2. Copia el código fuente
+COPY src ./src
+
+# 3. Empaqueta la aplicación
+RUN mvn clean package -DskipTests -B
+
+# Fase de ejecución
 FROM amazoncorretto:17-alpine-jdk
 WORKDIR /app
-COPY --from=build /app/target/EDIA-0.0.1-SNAPSHOT.jar /EDIA-0.0.1-SNAPSHOT.jar
-ENTRYPOINT ["java","-jar","/EDIA-0.0.1-SNAPSHOT.jar"]
+
+# Copia el JAR (verifica el nombre exacto en tu target/)
+COPY --from=build /app/target/EDIA-0.0.1-SNAPSHOT.jar app.jar
+
+# Puerto expuesto (ajusta según tu aplicación)
+EXPOSE 8083
+
+ENTRYPOINT ["java", "-jar", "app.jar"]
