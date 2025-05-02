@@ -27,4 +27,15 @@ public class UsuarioCursoImplement implements IUsuarioCursoService {
 
     @Override
     public void delete(int idUsuarioCurso) {ucR.deleteById(idUsuarioCurso);}
+
+    @Override
+    public List<String[]> cantidadusuarioxcurso() {
+        return ucR.cantidadEstudiantesporCurso();
+    }
+
+    @Override
+    public List<String[]> porcentajeCompletado() {
+        return ucR.porcentajeCompletado();
+    }
+
 }

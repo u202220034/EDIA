@@ -2,6 +2,7 @@ package pe.upc.edu.edia.entities;
 
 import jakarta.persistence.*;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 
@@ -16,6 +17,9 @@ public class UsuarioCurso{
     @Column(name="FechaInicio", nullable = false)
     private Date FechaInicio;
 
+    @Column(name="Estatus_Curso", nullable = false)
+    private BigDecimal Estatus_Curso;
+
     @ManyToOne
     @JoinColumn(name = "idUsuario")
     private Usuario usuario;
@@ -24,9 +28,10 @@ public class UsuarioCurso{
     @JoinColumn(name = "idCurso")
     private Curso curso;
 
-    public UsuarioCurso(int idUsuarioCurso, Date fechaInicio, Usuario usuario, Curso curso) {
+    public UsuarioCurso(int idUsuarioCurso, Date fechaInicio, BigDecimal estatus_Curso, Usuario usuario, Curso curso) {
         this.idUsuarioCurso = idUsuarioCurso;
         FechaInicio = fechaInicio;
+        Estatus_Curso = estatus_Curso;
         this.usuario = usuario;
         this.curso = curso;
     }
@@ -49,6 +54,14 @@ public class UsuarioCurso{
 
     public void setFechaInicio(Date fechaInicio) {
         FechaInicio = fechaInicio;
+    }
+
+    public BigDecimal getEstatus_Curso() {
+        return Estatus_Curso;
+    }
+
+    public void setEstatus_Curso(BigDecimal estatus_Curso) {
+        Estatus_Curso = estatus_Curso;
     }
 
     public Usuario getUsuario() {

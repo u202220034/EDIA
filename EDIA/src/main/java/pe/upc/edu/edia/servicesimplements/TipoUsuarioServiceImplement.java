@@ -29,4 +29,6 @@ public class TipoUsuarioServiceImplement implements ITipoUsuarioService {
     @Override
     public void delete(int idTipoUsuario) { tpuR.deleteById(idTipoUsuario); }
 
+
+
 }
