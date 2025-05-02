@@ -17,20 +17,16 @@ public class Curso {
     @Column(name="Descripcion", nullable = false, length = 200)
     private String Descripcion;
 
-    @Column(name="Estatus_Curso", nullable = false)
-    private BigDecimal Estatus_Curso;
-
     @ManyToOne
     @JoinColumn(name ="CategoriaCurso_idCategoria")
     private Categoria categoria;
 
     public Curso() {}
 
-    public Curso(int idCurso, String nombreCurso, String descripcion, int estatus_Curso, Categoria categoria) {
+    public Curso(int idCurso, String nombreCurso, String descripcion, Categoria categoria) {
         this.idCurso = idCurso;
         NombreCurso = nombreCurso;
         Descripcion = descripcion;
-        Estatus_Curso = BigDecimal.valueOf(estatus_Curso);
         this.categoria = categoria;
     }
 
@@ -58,14 +54,6 @@ public class Curso {
         Descripcion = descripcion;
     }
 
-    public BigDecimal getEstatus_Curso() {
-        return Estatus_Curso;
-    }
-
-    public void setEstatus_Curso(int estatus_Curso) {
-        Estatus_Curso = BigDecimal.valueOf(estatus_Curso);
-    }
-
     public Categoria getCategoria() {
         return categoria;
     }
@@ -73,7 +61,4 @@ public class Curso {
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
-
-
-
 }
