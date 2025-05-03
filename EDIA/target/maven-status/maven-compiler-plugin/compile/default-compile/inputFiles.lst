@@ -15,10 +15,12 @@ C:\Users\Enrique\Documents\GitHub\EDIA\EDIA\src\main\java\pe\upc\edu\edia\contro
 C:\Users\Enrique\Documents\GitHub\EDIA\EDIA\src\main\java\pe\upc\edu\edia\controllers\UsuarioCursoController.java
 C:\Users\Enrique\Documents\GitHub\EDIA\EDIA\src\main\java\pe\upc\edu\edia\controllers\UsuarioDesafioController.java
 C:\Users\Enrique\Documents\GitHub\EDIA\EDIA\src\main\java\pe\upc\edu\edia\dtos\ActividadesDTO.java
+C:\Users\Enrique\Documents\GitHub\EDIA\EDIA\src\main\java\pe\upc\edu\edia\dtos\CantidadEstudiantesporCursoDTO.java
 C:\Users\Enrique\Documents\GitHub\EDIA\EDIA\src\main\java\pe\upc\edu\edia\dtos\CategoriaDTO.java
 C:\Users\Enrique\Documents\GitHub\EDIA\EDIA\src\main\java\pe\upc\edu\edia\dtos\ComentarioDTO.java
 C:\Users\Enrique\Documents\GitHub\EDIA\EDIA\src\main\java\pe\upc\edu\edia\dtos\CursoDTO.java
 C:\Users\Enrique\Documents\GitHub\EDIA\EDIA\src\main\java\pe\upc\edu\edia\dtos\DesafioTemporalDTO.java
+C:\Users\Enrique\Documents\GitHub\EDIA\EDIA\src\main\java\pe\upc\edu\edia\dtos\EstudianteconPorcentajeCompletoxCursoDTO.java
 C:\Users\Enrique\Documents\GitHub\EDIA\EDIA\src\main\java\pe\upc\edu\edia\dtos\ForoDTO.java
 C:\Users\Enrique\Documents\GitHub\EDIA\EDIA\src\main\java\pe\upc\edu\edia\dtos\LeccionesDTO.java
 C:\Users\Enrique\Documents\GitHub\EDIA\EDIA\src\main\java\pe\upc\edu\edia\dtos\ProyectoDTO.java
