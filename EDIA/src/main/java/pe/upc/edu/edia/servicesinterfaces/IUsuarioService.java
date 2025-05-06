@@ -10,6 +10,4 @@ public interface IUsuarioService {
     public Usuario listId(int idUsuario);
     public void update(Usuario u);
     public void delete(int idUsuario);
-
-
 }

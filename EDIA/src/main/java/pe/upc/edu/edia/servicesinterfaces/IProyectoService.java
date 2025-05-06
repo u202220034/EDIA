@@ -11,4 +11,6 @@ public interface IProyectoService {
     public Proyecto listId(int idProyecto);
     public void update(Proyecto p);
     public void delete(int idProyecto);
+    public List<String[]> encontrarProyectos();
+    public List<String[]> CantidadProyectosporUsuario();
 }
