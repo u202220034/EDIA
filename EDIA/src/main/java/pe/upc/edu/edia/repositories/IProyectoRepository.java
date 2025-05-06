@@ -11,9 +11,8 @@ import java.util.List;
 public interface IProyectoRepository extends JpaRepository<Proyecto, Integer> {
 
     @Query(value ="SELECT\n" +
-            "    p.id_proyecto,\n" +
-            "    p.nombre_proyecto,\n" +
-            "    u.username AS Nombre_Usuario_Creador\n" +
+            "    u.username AS Nombre_Usuario_Creador,\n" +
+            "    p.nombre_proyecto\n" +
             "FROM\n" +
             "    proyecto p\n" +
             "JOIN\n" +

@@ -2,6 +2,7 @@ package pe.upc.edu.edia.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.upc.edu.edia.dtos.CantidadProyectoporUsuarioDTO;
 import pe.upc.edu.edia.dtos.EncontrarProyectoporUsuarioDTO;
@@ -49,16 +50,32 @@ public class ProyectoController {
     }
 
     @GetMapping("/EncontrarProyectoporUsuarios")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public List<EncontrarProyectoporUsuarioDTO> EncontrarProyectoporUsuario() {
         List<String[]> lista=pS.encontrarProyectos();
         List<EncontrarProyectoporUsuarioDTO> listaDto=new ArrayList<>();
         for (String[] columna : lista){
             EncontrarProyectoporUsuarioDTO dto=new EncontrarProyectoporUsuarioDTO();
-            dto.setIdProyecto(Integer.parseInt(columna[0]));
+            dto.setUsername(columna[0]);
             dto.setNombreProyecto(columna[1]);
-            dto.setUsername(columna[2]);
             listaDto.add(dto);
         }
         return listaDto;
     }
+
+    @GetMapping("/CantidadProyectosUsus")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public List<CantidadProyectoporUsuarioDTO> CantidadProyectos(){
+        List<String[]> lista=pS.CantidadProyectosporUsuario();
+        List<CantidadProyectoporUsuarioDTO> ctlistaDto=new ArrayList<>();
+        for (String[] columna : lista){
+            CantidadProyectoporUsuarioDTO dto=new CantidadProyectoporUsuarioDTO();
+            dto.setIdUsuario(Integer.parseInt(columna[0]));
+            dto.setNombreUsuario(columna[1]);
+            dto.setCantidad(Integer.parseInt(columna[2]));
+            ctlistaDto.add(dto);
+        }
+        return ctlistaDto;
+    }
+
 }

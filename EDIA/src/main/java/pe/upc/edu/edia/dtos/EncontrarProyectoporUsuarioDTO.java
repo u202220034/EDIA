@@ -1,17 +1,8 @@
 package pe.upc.edu.edia.dtos;
 
 public class EncontrarProyectoporUsuarioDTO {
-    private int idProyecto;
     private String NombreProyecto;
     private String username;
-
-    public int getIdProyecto() {
-        return idProyecto;
-    }
-
-    public void setIdProyecto(int idProyecto) {
-        this.idProyecto = idProyecto;
-    }
 
     public String getNombreProyecto() {
         return NombreProyecto;
