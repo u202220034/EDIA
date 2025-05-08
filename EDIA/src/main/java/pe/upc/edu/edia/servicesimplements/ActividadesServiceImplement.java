@@ -38,4 +38,14 @@ public class ActividadesServiceImplement implements IActividadesService {
     public void delete(int idActividades) {
         aR.deleteById(idActividades);
     }
+
+    @Override
+    public List<String[]> cantidadActividadesPorTipo() {
+        return aR.cantidadActividadesPorTipo();
+    }
+
+    @Override
+    public List<String[]> actividadesPorLeccion(int idLeccion) {
+        return aR.actividadesPorLeccion(idLeccion);
+    }
 }

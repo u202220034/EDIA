@@ -38,4 +38,14 @@ public class LeccionesServiceImplement implements ILeccionesService {
     public void delete(int idLecciones) {
         lR.deleteById(idLecciones);
     }
+
+    @Override
+    public List<String[]> cantidadActividadesPorLeccion() {
+        return lR.cantidadActividadesPorLeccion();
+    }
+
+    @Override
+    public List<String[]> leccionesConActividadesActivas() {
+        return lR.leccionesConActividadesActivas();
+    }
 }

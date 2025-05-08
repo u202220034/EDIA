@@ -4,6 +4,7 @@ package pe.upc.edu.edia.controllers;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import pe.upc.edu.edia.dtos.TipoActividadEnLeccionDTO;
 import pe.upc.edu.edia.dtos.TipodeActividadDTO;
 import pe.upc.edu.edia.entities.TipodeActividad;
 import pe.upc.edu.edia.servicesinterfaces.ITipodeActividadService;
@@ -44,4 +45,10 @@ public class TipodeActividadController {
     }
     @DeleteMapping("/{idTipodeActividad}")
     public void eliminar(@PathVariable("idTipodeActividad")int idTipodeActividad){tpaS.delete(idTipodeActividad);}
-}
+
+    @GetMapping("/tiposporleccion/{id}")
+    public List<TipoActividadEnLeccionDTO> obtenerTiposPorLeccion(@PathVariable("id") int idLeccion) {
+        return tpaS.tiposPorLeccion(idLeccion).stream().map(obj ->
+                new TipoActividadEnLeccionDTO((String) obj[0])
+        ).collect(Collectors.toList());
+    }}

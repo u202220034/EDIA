@@ -12,4 +12,8 @@ public interface IActividadesService {
     public Actividades listId(int idActividades);
     public void update(Actividades a);
     public void delete(int idActividades);
+
+    List<String[]> cantidadActividadesPorTipo();
+
+    List<String[]> actividadesPorLeccion(int id);
 }
