@@ -1,5 +1,6 @@
 package pe.upc.edu.edia.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -34,6 +35,7 @@ public class Usuario implements Serializable {
     @Column(name = "Verificacion", nullable = false)
     private Boolean verificacion;
 
+    @JsonIgnore
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private List<TipoUsuario> tipoUsuarios;
