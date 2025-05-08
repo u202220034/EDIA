@@ -54,7 +54,6 @@ public class WebSecurityConfig {
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(jwtUserDetailsService).passwordEncoder(passwordEncoder());
-        
     }
 
     @Bean
@@ -64,7 +63,9 @@ public class WebSecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(req -> req
                         .requestMatchers(antMatcher("/login")).permitAll()
-                        .requestMatchers(antMatcher("/usuarioscursos/**")).permitAll()
+                        .requestMatchers(antMatcher("/desafiotemporal/**")).permitAll()
+                        .requestMatchers(antMatcher("/usuariosdesafios/**")).permitAll()
+                        
                         .anyRequest().authenticated()
                 )
                 .httpBasic(Customizer.withDefaults())

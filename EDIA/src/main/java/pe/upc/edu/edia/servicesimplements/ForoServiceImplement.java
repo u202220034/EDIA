@@ -38,4 +38,9 @@ public class ForoServiceImplement implements IForoService {
     public void delete(int idForo) {
         forR.deleteById(idForo);
     }
+
+    @Override
+    public List<String[]> listarForosPorTipo(String tipo) {
+        return forR.listarForosPorTipo(tipo);
+    }
 }

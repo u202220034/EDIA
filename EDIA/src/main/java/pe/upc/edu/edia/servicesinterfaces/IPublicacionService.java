@@ -11,4 +11,5 @@ public interface IPublicacionService {
     public Publicacion listId(int idPublicacion);
     public void update(Publicacion pub);
     public void delete(int idPublicacion);
+    public List<String[]> comentariosConTitulosPublicacion();
 }

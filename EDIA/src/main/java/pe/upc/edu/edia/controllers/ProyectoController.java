@@ -2,11 +2,15 @@ package pe.upc.edu.edia.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import pe.upc.edu.edia.dtos.CantidadProyectoporUsuarioDTO;
+import pe.upc.edu.edia.dtos.EncontrarProyectoporUsuarioDTO;
 import pe.upc.edu.edia.dtos.ProyectoDTO;
 import pe.upc.edu.edia.entities.Proyecto;
 import pe.upc.edu.edia.servicesinterfaces.IProyectoService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -44,4 +48,34 @@ public class ProyectoController {
     public void eliminar(@PathVariable("idProyecto") int idProyecto) {
         pS.delete(idProyecto);
     }
+
+    @GetMapping("/EncontrarProyectoporUsuarios")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public List<EncontrarProyectoporUsuarioDTO> EncontrarProyectoporUsuario() {
+        List<String[]> lista=pS.encontrarProyectos();
+        List<EncontrarProyectoporUsuarioDTO> listaDto=new ArrayList<>();
+        for (String[] columna : lista){
+            EncontrarProyectoporUsuarioDTO dto=new EncontrarProyectoporUsuarioDTO();
+            dto.setUsername(columna[0]);
+            dto.setNombreProyecto(columna[1]);
+            listaDto.add(dto);
+        }
+        return listaDto;
+    }
+
+    @GetMapping("/CantidadProyectosUsus")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public List<CantidadProyectoporUsuarioDTO> CantidadProyectos(){
+        List<String[]> lista=pS.CantidadProyectosporUsuario();
+        List<CantidadProyectoporUsuarioDTO> ctlistaDto=new ArrayList<>();
+        for (String[] columna : lista){
+            CantidadProyectoporUsuarioDTO dto=new CantidadProyectoporUsuarioDTO();
+            dto.setIdUsuario(Integer.parseInt(columna[0]));
+            dto.setNombreUsuario(columna[1]);
+            dto.setCantidad(Integer.parseInt(columna[2]));
+            ctlistaDto.add(dto);
+        }
+        return ctlistaDto;
+    }
+
 }

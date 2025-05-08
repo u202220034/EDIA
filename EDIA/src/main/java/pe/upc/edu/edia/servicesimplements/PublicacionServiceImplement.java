@@ -35,4 +35,9 @@ public class PublicacionServiceImplement implements IPublicacionService {
 
     @Override
     public void delete(int idPublicacion) {pubR.deleteById(idPublicacion);}
+
+    @Override
+    public List<String[]> comentariosConTitulosPublicacion() {
+        return pubR.comentariosConTitulosPublicacion();
+    }
 }
