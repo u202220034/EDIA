@@ -12,4 +12,6 @@ public interface ITipodeActividadService {
     public TipodeActividad listId(int idTipodeActividad);
     public void update(TipodeActividad tpas);
     public void delete(int idTipodeActividad);
+
+    List<String[]> tiposPorLeccion(int idLeccion);
 }
