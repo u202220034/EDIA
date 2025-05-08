@@ -6,7 +6,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.upc.edu.edia.dtos.DesafioTemporalDTO;
 import pe.upc.edu.edia.dtos.EncontarDesafioExpiradoDTO;
-import pe.upc.edu.edia.dtos.ParticipacionDeEstudiantesPorDesafiosDTO;
+
 import pe.upc.edu.edia.entities.DesafioTemporal;
 import pe.upc.edu.edia.servicesinterfaces.IDesafioTemporalService;
 
