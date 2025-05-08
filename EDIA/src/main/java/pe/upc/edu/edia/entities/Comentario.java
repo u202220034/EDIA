@@ -1,5 +1,6 @@
 package pe.upc.edu.edia.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -17,6 +18,7 @@ public class Comentario{
     @Column(name="fechaComentario",nullable = false)
     private Date fechaComentario;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name="idPublicacion")
     private Publicacion publicacion;

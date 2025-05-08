@@ -1,5 +1,6 @@
 package pe.upc.edu.edia.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -13,10 +14,12 @@ public class Actividades {
     @Column(name = "Estatus", nullable = false)
     private boolean estatus;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "idLecciones")
     private Lecciones lecciones;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn( name = "idTipodeActividad")
     private TipodeActividad tipodeActividad;
