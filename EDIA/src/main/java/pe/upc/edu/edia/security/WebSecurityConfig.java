@@ -66,7 +66,8 @@ public class WebSecurityConfig {
                         .requestMatchers(antMatcher("/login")).permitAll()
                         .requestMatchers(antMatcher("/desafiotemporal/**")).permitAll()
                         .requestMatchers(antMatcher("/usuariosdesafios/**")).permitAll()
-                        
+                        .requestMatchers(antMatcher("/usuarioscursos/**")).permitAll()
+
                         .anyRequest().authenticated()
                 )
                 .httpBasic(Customizer.withDefaults())
