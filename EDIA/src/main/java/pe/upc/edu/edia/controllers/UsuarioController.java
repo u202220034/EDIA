@@ -5,10 +5,12 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import pe.upc.edu.edia.dtos.EncontrarProyectoporUsuarioDTO;
 import pe.upc.edu.edia.dtos.UsuarioDTO;
 import pe.upc.edu.edia.entities.Usuario;
 import pe.upc.edu.edia.servicesinterfaces.IUsuarioService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -19,8 +21,8 @@ public class UsuarioController {
     @Autowired
     private IUsuarioService uS;
 
-    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping
+    @PreAuthorize("hasAuthority('ADMIN')")
     public List<UsuarioDTO> listar() {
         return uS.list().stream().map(x->{
             ModelMapper modelMapper = new ModelMapper();

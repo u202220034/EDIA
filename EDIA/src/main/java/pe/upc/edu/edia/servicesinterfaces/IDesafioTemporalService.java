@@ -12,6 +12,7 @@ public interface IDesafioTemporalService {
     public void delete(int dtems);
     public DesafioTemporal listId(int idDesafioTemporal);
     public void update(DesafioTemporal dtems);
+    public List<String[]> verDesafioExpirado();
 
 
 }

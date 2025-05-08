@@ -4,9 +4,11 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pe.upc.edu.edia.dtos.PublicacionDTO;
+import pe.upc.edu.edia.dtos.comentariosConTitulosPublicacionDTO;
 import pe.upc.edu.edia.entities.Publicacion;
 import pe.upc.edu.edia.servicesinterfaces.IPublicacionService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -36,4 +38,18 @@ public class PublicacionController {
     }
     @DeleteMapping("/{idPublicacion}")
     public void eliminar(@PathVariable ("idPublicacion")int idPublicacion) {pubS.delete(idPublicacion);}
+
+    @GetMapping("/comentariosConTitulosPublicaciones")
+    public List<comentariosConTitulosPublicacionDTO> comentariosConTitulosPublicaciones() {
+        List<String[]> lista=pubS.comentariosConTitulosPublicacion();
+        List<comentariosConTitulosPublicacionDTO>listaDTO=new ArrayList<>();
+        for (String[] columna:lista) {
+            comentariosConTitulosPublicacionDTO dto=new comentariosConTitulosPublicacionDTO();
+            dto.setTitulo(columna[0]);
+            dto.setContenido(columna[1]);
+            dto.setId_comentario(Integer.parseInt(columna[2]));
+            listaDTO.add(dto);
+        }
+        return listaDTO;
+    }
 }
