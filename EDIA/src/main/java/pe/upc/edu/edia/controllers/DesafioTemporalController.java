@@ -2,16 +2,11 @@ package pe.upc.edu.edia.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.upc.edu.edia.dtos.DesafioTemporalDTO;
-import pe.upc.edu.edia.dtos.EncontarDesafioExpiradoDTO;
-import pe.upc.edu.edia.dtos.ParticipacionDeEstudiantesPorDesafiosDTO;
 import pe.upc.edu.edia.entities.DesafioTemporal;
 import pe.upc.edu.edia.servicesinterfaces.IDesafioTemporalService;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -47,23 +42,4 @@ public class DesafioTemporalController {
     }
     @DeleteMapping("/{idDesafioTemporal}")
     public void eliminar(@PathVariable("idDesafioTemporal") int idDesafioTemporal){ dtS.delete(idDesafioTemporal);}
-
-    @GetMapping("/expirados")
-    @PreAuthorize("hasAnyAuthority('ADMIN')")
-    public List<EncontarDesafioExpiradoDTO> obtenerExpirados() {
-        List<String[]> datos = dtS.verDesafioExpirado();
-        List<EncontarDesafioExpiradoDTO> resultado = new ArrayList<>();
-
-        for (String[] fila : datos) {
-            EncontarDesafioExpiradoDTO dto = new EncontarDesafioExpiradoDTO();
-            dto.setIdDesafioTemporal(Integer.parseInt(fila[0]));
-            dto.setNombreDesafio(fila[1]);
-            dto.setFechaInicio(LocalDate.parse(fila[2]));
-            dto.setFechaCulminacion(LocalDate.parse(fila[3]));
-            resultado.add(dto);
-        }
-
-        return resultado;
-    }
-
 }

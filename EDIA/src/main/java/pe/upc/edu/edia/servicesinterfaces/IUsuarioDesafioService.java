@@ -11,5 +11,4 @@ public interface IUsuarioDesafioService {
     public UsuarioDesafio listId(int idUsuarioDesafio);
     public void update(UsuarioDesafio ud);
     public void delete(int idUsuarioDesafio);
-    public List<String[]> verUsuarioDesafio();
 }

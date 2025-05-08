@@ -38,14 +38,4 @@ public class ProyectoServiceImplement implements IProyectoService {
     public void delete(int idProyecto) {
         pR.deleteById(idProyecto);
     }
-
-    @Override
-    public List<String[]> encontrarProyectos() {
-        return pR.encontrarproyectosporUsuario();
-    }
-
-    @Override
-    public List<String[]> CantidadProyectosporUsuario() {
-        return pR.cantidadproyectosporUsuario();
-    }
 }

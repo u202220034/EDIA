@@ -10,5 +10,4 @@ public interface IForoService {
     public Foro ListId(int idForo);
     public void update(Foro f);
     public void delete(int idForo);
-    public List<String[]> listarForosPorTipo(String tipo);
 }

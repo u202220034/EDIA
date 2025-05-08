@@ -38,9 +38,4 @@ public class UsuarioDesafioServiceImplement implements IUsuarioDesafioService {
     public void delete(int idUsuarioDesafio) {
 
     }
-
-    @Override
-    public List<String[]> verUsuarioDesafio(){
-        return udR.verUsuarioDesafio();
-    }
 }

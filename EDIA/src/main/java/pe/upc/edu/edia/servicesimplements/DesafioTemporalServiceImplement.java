@@ -30,10 +30,5 @@ public class DesafioTemporalServiceImplement implements IDesafioTemporalService 
     @Override
     public void delete(int idDesafioTemporal) { detr.deleteById(idDesafioTemporal); }
 
-    @Override
-    public List<String[]> verDesafioExpirado(){
-        return detr.verDesafioExpirtado();
-    }
-
 
 }
