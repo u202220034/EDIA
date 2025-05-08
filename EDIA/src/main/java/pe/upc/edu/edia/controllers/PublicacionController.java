@@ -45,9 +45,9 @@ public class PublicacionController {
         List<comentariosConTitulosPublicacionDTO>listaDTO=new ArrayList<>();
         for (String[] columna:lista) {
             comentariosConTitulosPublicacionDTO dto=new comentariosConTitulosPublicacionDTO();
-            dto.setTitulo(columna[0]);
+            dto.setId_comentario(Integer.parseInt(columna[0]));
             dto.setContenido(columna[1]);
-            dto.setId_comentario(Integer.parseInt(columna[2]));
+            dto.setTitulo(columna[2]);
             listaDTO.add(dto);
         }
         return listaDTO;
