@@ -41,7 +41,7 @@ public class ForoController {
     @DeleteMapping("/{idForo}")
     public void eliminar(@PathVariable ("idForo") int idForo) {forS.delete(idForo);}
 
-    @GetMapping("/listarForoPorTipo")
+    @GetMapping("/listarForoPorTipo/{tipo}")
     public List<ListarForoPorTipoDTO> ListarForoPorTipo(@PathVariable String tipo) {
         List<String[]>lista=forS.listarForosPorTipo(tipo);
         List<ListarForoPorTipoDTO>listaDTO= new ArrayList<>();
