@@ -2,11 +2,14 @@ package pe.upc.edu.edia.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import pe.upc.edu.edia.dtos.ParticipacionDeEstudiantesPorDesafiosDTO;
 import pe.upc.edu.edia.dtos.UsuarioDesafioDTO;
 import pe.upc.edu.edia.entities.UsuarioDesafio;
 import pe.upc.edu.edia.servicesinterfaces.IUsuarioDesafioService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -45,4 +48,23 @@ public class UsuarioDesafioController {
     public void eliminar(@PathVariable("idUsuarioDesafio") int idUsuarioDesafio) {
         udS.delete(idUsuarioDesafio);
     }
+
+
+    @GetMapping("/participaciones")
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
+    public List<ParticipacionDeEstudiantesPorDesafiosDTO> obtenerParticipaciones() {
+        List<String[]> datos = udS.verUsuarioDesafio();
+        List<ParticipacionDeEstudiantesPorDesafiosDTO> resultado = new ArrayList<>();
+
+        for (String[] fila : datos) {
+            ParticipacionDeEstudiantesPorDesafiosDTO dto = new ParticipacionDeEstudiantesPorDesafiosDTO();
+            dto.setIdUsuario(Integer.parseInt(fila[0]));
+            dto.setNombreDesafio(fila[1]);
+            dto.setPuntaje(Float.parseFloat(fila[2]));
+            resultado.add(dto);
+        }
+
+        return resultado;
+    }
+
 }
