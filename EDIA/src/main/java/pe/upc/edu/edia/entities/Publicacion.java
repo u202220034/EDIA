@@ -1,5 +1,6 @@
 package pe.upc.edu.edia.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -21,10 +22,12 @@ public class Publicacion {
     @Column(name="FechaPublicacion", nullable = false)
     private Date FechaPublicacion;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "idUsuario")
     private Usuario usuario;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name="idForo")
     private Foro foro;

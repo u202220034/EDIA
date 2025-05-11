@@ -1,5 +1,6 @@
 package pe.upc.edu.edia.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
@@ -17,6 +18,7 @@ public class Curso {
     @Column(name="Descripcion", nullable = false, length = 200)
     private String Descripcion;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name ="CategoriaCurso_idCategoria")
     private Categoria categoria;
