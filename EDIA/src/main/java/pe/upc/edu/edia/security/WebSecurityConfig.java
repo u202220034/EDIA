@@ -81,6 +81,5 @@ public class WebSecurityConfig {
             "/v3/api-docs.yaml",
             "/swagger-ui/**",
             "/swagger-ui.html"
-
     };
 }
