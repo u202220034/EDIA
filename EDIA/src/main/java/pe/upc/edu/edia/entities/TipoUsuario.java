@@ -9,9 +9,7 @@ public class TipoUsuario {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
-
     private String tipoUsuario;
-
     @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
