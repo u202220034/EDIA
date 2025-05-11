@@ -29,5 +29,10 @@ public class TipodeActividadServiceImplement implements ITipodeActividadService 
     @Override
     public void delete(int idTipodeActividad) {tpaR.deleteById(idTipodeActividad);}
 
+    @Override
+    public List<String[]> tiposPorLeccion(int idLeccion) {
+        return tpaR.tiposPorLeccion(idLeccion);
+    }
+
 
 }

@@ -29,7 +29,7 @@ public class JwtAuthenticationController {
     private JwtUserDetailsServiceImplement userDetailsServiceImplement;
 
 
-    @PostMapping("/Inicio_de_Sesion")
+    @PostMapping("/login")
     public ResponseEntity<JwtResponse> login(@RequestBody JwtRequest req) throws Exception {
         authenticate(req.getUsername(), req.getPassword());
         final UserDetails userDetails = userDetailsServiceImplement.loadUserByUsername(req.getUsername());

@@ -13,5 +13,10 @@ public interface ILeccionesService {
     public Lecciones listId(int idLecciones);
     public void update(Lecciones l);
     public void delete(int idLecciones);
+
+    List<String[]> cantidadActividadesPorLeccion();
+
+    List<String[]> leccionesConActividadesActivas();
+
 }
 

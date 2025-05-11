@@ -4,6 +4,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pe.upc.edu.edia.dtos.ActividadesDTO;
+import pe.upc.edu.edia.dtos.ActividadesDentroDeLeccionDTO;
+import pe.upc.edu.edia.dtos.ActividadesPorTipoDTO;
 import pe.upc.edu.edia.entities.Actividades;
 import pe.upc.edu.edia.servicesinterfaces.IActividadesService;
 
@@ -44,4 +46,19 @@ public class ActividadesController {
     }
     @DeleteMapping("/{idActividades}")
     public void eliminar(@PathVariable("idActividades")int idActividades){aS.delete(idActividades);}
+
+        @GetMapping("/cantidadportipo")
+    public List<ActividadesPorTipoDTO> cantidadActividadesPorTipo() {
+        return aS.cantidadActividadesPorTipo().stream().map(obj ->
+                new ActividadesPorTipoDTO((String) obj[0], Long.parseLong(obj[1].toString()))
+        ).collect(Collectors.toList());
+    }
+
+    @GetMapping("/porleccion/{id}")
+    public List<ActividadesDentroDeLeccionDTO> porLeccion(@PathVariable("id") int id) {
+        return aS.actividadesPorLeccion(id).stream().map(obj ->
+                new ActividadesDentroDeLeccionDTO((String) obj[0], (String) obj[1], Boolean.parseBoolean(obj[2].toString()))
+        ).collect(Collectors.toList());
+    }
+
 }
