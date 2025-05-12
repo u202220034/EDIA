@@ -4,6 +4,7 @@ package pe.upc.edu.edia.controllers;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import pe.upc.edu.edia.dtos.EncontrarProyectoporUsuarioDTO;
 import pe.upc.edu.edia.dtos.UsuarioDTO;
@@ -21,6 +22,9 @@ public class UsuarioController {
     @Autowired
     private IUsuarioService uS;
 
+    @Autowired
+    PasswordEncoder passwordEncoder;
+
     @GetMapping
     @PreAuthorize("hasAuthority('ADMIN')")
     public List<UsuarioDTO> listar() {
@@ -33,6 +37,7 @@ public class UsuarioController {
     public void insertar(@RequestBody UsuarioDTO uDTO) {
         ModelMapper modelMapper = new ModelMapper();
         Usuario u= modelMapper.map(uDTO, Usuario.class);
+        u.setPassword(passwordEncoder.encode(uDTO.getPassword()));
         uS.insert(u);
     }
     @PutMapping
@@ -43,4 +48,10 @@ public class UsuarioController {
     }
     @DeleteMapping("/{idUsuario}")
     public void eliminar(@PathVariable("idUsuario") int idUsuario) { uS.delete(idUsuario); }
+    @GetMapping("/{idUsuarios}")
+    public UsuarioDTO ListarUsuarios(@PathVariable ("idUsuarios")int idUsuarios) {
+        ModelMapper m = new ModelMapper();
+        UsuarioDTO dto = m.map(uS.listId(idUsuarios), UsuarioDTO.class);
+        return dto;
+    }
 }

@@ -4,15 +4,15 @@ import pe.upc.edu.edia.entities.Usuario;
 
 public class TipoUsuarioDTO {
 
-    private Long idTipoUsuario;
+    private int idTipoUsuario;
     private String nombreTipoUsuario;
     private Usuario usuario;
 
-    public Long getIdTipoUsuario() {
+    public int getIdTipoUsuario() {
         return idTipoUsuario;
     }
 
-    public void setIdTipoUsuario(Long idTipoUsuario) {
+    public void setIdTipoUsuario(int idTipoUsuario) {
         this.idTipoUsuario = idTipoUsuario;
     }
 
