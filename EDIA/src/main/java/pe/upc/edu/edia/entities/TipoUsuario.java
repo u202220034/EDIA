@@ -1,5 +1,6 @@
 package pe.upc.edu.edia.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -7,19 +8,17 @@ import jakarta.persistence.*;
 public class TipoUsuario {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Long id;
-
+    private int id;
     private String tipoUsuario;
-
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private Usuario usuario;
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

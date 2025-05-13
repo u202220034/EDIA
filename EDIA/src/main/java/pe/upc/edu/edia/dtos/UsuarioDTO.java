@@ -11,7 +11,6 @@ public class UsuarioDTO {
     private String correo;
     private String dni;
     private Boolean verificacion;
-    private TipoUsuario tipoUsuario;
 
     public int getIdUsuario() {
         return idUsuario;
@@ -75,13 +74,5 @@ public class UsuarioDTO {
 
     public void setVerificacion(Boolean verificacion) {
         this.verificacion = verificacion;
-    }
-
-    public TipoUsuario getTipoUsuario() {
-        return tipoUsuario;
-    }
-
-    public void setTipoUsuario(TipoUsuario tipoUsuario) {
-        this.tipoUsuario = tipoUsuario;
     }
 }

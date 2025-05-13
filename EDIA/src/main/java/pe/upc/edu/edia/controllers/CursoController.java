@@ -29,7 +29,7 @@ public class CursoController {
         Curso a = m.map(curDTO, Curso.class);
         curS.insert(a);
     }
-    @GetMapping("/{idCategoria}")
+    @GetMapping("/{idCursos}")
     public CursoDTO ListarCursos(@PathVariable ("idCurso")int idCurso){
         ModelMapper m = new ModelMapper();
         CursoDTO dto = m.map(curS.listId(idCurso), CursoDTO.class);

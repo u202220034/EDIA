@@ -1,3 +1,4 @@
+
 package pe.upc.edu.edia.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,18 +57,15 @@ public class WebSecurityConfig {
         auth.userDetailsService(jwtUserDetailsService).passwordEncoder(passwordEncoder());
     }
 
-    
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
         //Desde Spring Boot 3.1+
         httpSecurity
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(req -> req
-                        .requestMatchers(antMatcher("/login")).permitAll()
-                        .requestMatchers(antMatcher("/desafiotemporal/**")).permitAll()
-                        .requestMatchers(antMatcher("/usuariosdesafios/**")).permitAll()
+                        .requestMatchers(antMatcher("/Inicio_de_Sesion")).permitAll()
                         .requestMatchers(antMatcher("/usuarioscursos/**")).permitAll()
-
+                        .requestMatchers(AUTH_WHITELIST).permitAll()
                         .anyRequest().authenticated()
                 )
                 .httpBasic(Customizer.withDefaults())
@@ -77,4 +75,11 @@ public class WebSecurityConfig {
         httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
         return httpSecurity.build();
     }
+    private static final String[] AUTH_WHITELIST={
+            "/api/v1/auth/**",
+            "/v3/api-docs/**",
+            "/v3/api-docs.yaml",
+            "/swagger-ui/**",
+            "/swagger-ui.html"
+    };
 }

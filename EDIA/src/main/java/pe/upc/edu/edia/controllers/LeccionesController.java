@@ -3,6 +3,8 @@ package pe.upc.edu.edia.controllers;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import pe.upc.edu.edia.dtos.CantidadActividadesPorLeccionDTO;
+import pe.upc.edu.edia.dtos.LeccionesActivasDTO;
 import pe.upc.edu.edia.dtos.LeccionesDTO;
 import pe.upc.edu.edia.entities.Lecciones;
 import pe.upc.edu.edia.servicesinterfaces.ILeccionesService;
@@ -43,4 +45,19 @@ public class LeccionesController {
     }
     @DeleteMapping("/{idLecciones}")
     public void eliminar(@PathVariable("idLecciones")int idLecciones){lS.delete(idLecciones);}
+
+    @GetMapping("/cantidadactvporleccion")
+    public List<CantidadActividadesPorLeccionDTO> resumenPorLeccion() {
+        return lS.cantidadActividadesPorLeccion().stream().map(obj ->
+                new CantidadActividadesPorLeccionDTO((String) obj[0], Long.parseLong(obj[1].toString()))
+        ).collect(Collectors.toList());
+    }
+
+    @GetMapping("/leccionesactivas")
+    public List<LeccionesActivasDTO> leccionesActivas() {
+        return lS.leccionesConActividadesActivas().stream().map(obj ->
+                new LeccionesActivasDTO((String) obj[0])
+        ).collect(Collectors.toList());
+    }
+
 }

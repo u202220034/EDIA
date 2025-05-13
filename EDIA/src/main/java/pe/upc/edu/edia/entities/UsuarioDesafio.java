@@ -1,5 +1,6 @@
 package pe.upc.edu.edia.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -12,10 +13,12 @@ public class UsuarioDesafio {
     @Column(name = "Puntaje", nullable = false, length = 10)
     private float Puntaje;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "idUsuario")
     private Usuario usuario;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name ="idDesafioTemporal")
     private DesafioTemporal desafioTemporal;
