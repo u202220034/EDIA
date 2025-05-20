@@ -1,10 +1,11 @@
 package pe.upc.edu.edia.dtos;
 
-import pe.upc.edu.edia.entities.TipoUsuario;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class UsuarioDTO {
     private int idUsuario;
     private String username;
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
     private String nombre;
     private String apellidos;

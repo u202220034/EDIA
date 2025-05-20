@@ -3,19 +3,31 @@ package pe.upc.edu.edia.dtos;
 import pe.upc.edu.edia.entities.Curso;
 
 public class LeccionesDTO {
-    private int idLeccion;
+    private int idLecciones;
     private String titulo;
     private Curso curso;
 
-    public int getIdLeccion() {return idLeccion;}
+    public int getIdLecciones() {
+        return idLecciones;
+    }
 
-    public void setIdLeccion(int idLeccion) {this.idLeccion = idLeccion;}
+    public void setIdLecciones(int idLecciones) {
+        this.idLecciones = idLecciones;
+    }
 
-    public String getTitulo() {return titulo;}
+    public String getTitulo() {
+        return titulo;
+    }
 
-    public void setTitulo(String titulo) {this.titulo = titulo;}
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
 
-    public Curso getCurso() {return curso;}
+    public Curso getCurso() {
+        return curso;
+    }
 
-    public void setCurso(Curso curso) {this.curso = curso;}
+    public void setCurso(Curso curso) {
+        this.curso = curso;
+    }
 }

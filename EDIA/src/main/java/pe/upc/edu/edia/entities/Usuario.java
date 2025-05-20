@@ -2,6 +2,7 @@ package pe.upc.edu.edia.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -17,7 +18,7 @@ public class Usuario implements Serializable {
 
     @Column(length = 30, unique = true, nullable = false)
     private String username;
-
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @Column(name = "Password", length = 200, nullable = false)
     private String password;
 
