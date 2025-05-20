@@ -12,6 +12,6 @@ import java.util.List;
 public interface IForoRepository extends JpaRepository<Foro, Integer> {
     @Query(value="SELECT id_foro, nombre_foro, tipo_foro \n"+
             "FROM foro \n"+
-            "WHERE tipo_foro EQUALS tipo", nativeQuery = true)
+            "WHERE tipo_foro = :tipo", nativeQuery = true)
     public List<String[]> listarForosPorTipo(@Param("tipo") String tipo);
 }
