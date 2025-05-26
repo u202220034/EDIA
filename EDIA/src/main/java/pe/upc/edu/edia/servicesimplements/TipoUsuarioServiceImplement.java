@@ -27,8 +27,9 @@ public class TipoUsuarioServiceImplement implements ITipoUsuarioService {
     public void update(TipoUsuario tu) { tpuR.save(tu);}
 
     @Override
-    public void delete(int idTipoUsuario) { tpuR.deleteById(idTipoUsuario); }
-
+    public void delete(int idtipoUsuario) {
+        tpuR.deleteById(idtipoUsuario);
+    }
 
 
 }

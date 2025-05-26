@@ -11,7 +11,7 @@ import pe.upc.edu.edia.entities.Usuario;
 import java.util.List;
 
 @Repository
-public interface IUsuarioRepository extends JpaRepository<Usuario, Integer> {
+public interface IUsuarioRepository extends JpaRepository<Usuario, Long> {
     public Usuario findOneByUsername(String usuario);
 
     @Query("select count(u.username) from Usuario u where u.username =:username")

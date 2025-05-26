@@ -1,27 +1,29 @@
 package pe.upc.edu.edia.dtos;
 
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import pe.upc.edu.edia.entities.Usuario;
 
 public class TipoUsuarioDTO {
 
-    private int idTipoUsuario;
-    private String nombreTipoUsuario;
+    private int id;
+    private String tipoUsuario;
     private Usuario usuario;
 
-    public int getIdTipoUsuario() {
-        return idTipoUsuario;
+    public int getId() {
+        return id;
     }
 
-    public void setIdTipoUsuario(int idTipoUsuario) {
-        this.idTipoUsuario = idTipoUsuario;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getNombreTipoUsuario() {
-        return nombreTipoUsuario;
+    public String getTipoUsuario() {
+        return tipoUsuario;
     }
 
-    public void setNombreTipoUsuario(String nombreTipoUsuario) {
-        this.nombreTipoUsuario = nombreTipoUsuario;
+    public void setTipoUsuario(String tipoUsuario) {
+        this.tipoUsuario = tipoUsuario;
     }
 
     public Usuario getUsuario() {

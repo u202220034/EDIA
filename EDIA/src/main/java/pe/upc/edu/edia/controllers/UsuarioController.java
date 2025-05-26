@@ -47,9 +47,10 @@ public class UsuarioController {
         uS.update(u);
     }
     @DeleteMapping("/{idUsuario}")
-    public void eliminar(@PathVariable("idUsuario") int idUsuario) { uS.delete(idUsuario); }
+    public void eliminar(@PathVariable("idUsuario") Long idUsuario) { uS.delete(idUsuario); }
+
     @GetMapping("/{idUsuarios}")
-    public UsuarioDTO ListarUsuarios(@PathVariable ("idUsuarios")int idUsuarios) {
+    public UsuarioDTO ListarUsuarios(@PathVariable ("idUsuarios")Long idUsuarios) {
         ModelMapper m = new ModelMapper();
         UsuarioDTO dto = m.map(uS.listId(idUsuarios), UsuarioDTO.class);
         return dto;
