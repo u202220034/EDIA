@@ -47,18 +47,11 @@ public class ForoController {
         List<ListarForoPorTipoDTO>listaDTO= new ArrayList<>();
         for (String[] columna:lista) {
             ListarForoPorTipoDTO dto = new ListarForoPorTipoDTO();
-            dto.setId_foro(Integer.parseInt(columna[0]));
-            dto.setNombre_foro(columna[1]);
-            dto.setTipo_foro(columna[2]);
+            dto.setNombre_foro(columna[0]);
+            dto.setTipo_foro(columna[1]);
+            dto.setId_foro(Integer.parseInt(columna[2]));
             listaDTO.add(dto);
         }
         return listaDTO;
-    }
-
-    @GetMapping("/{idForo}")
-    public ForoDTO listId(@PathVariable ("idForo") int idForo) {
-        ModelMapper m = new ModelMapper();
-        ForoDTO dto = m.map(forS.ListId(idForo), ForoDTO.class);
-        return dto;
     }
 }
