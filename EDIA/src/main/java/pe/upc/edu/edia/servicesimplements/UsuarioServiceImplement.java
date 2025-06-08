@@ -25,9 +25,10 @@ public class UsuarioServiceImplement implements IUsuarioService {
     }
 
     @Override
-    public Usuario listId(int idUsuario) {
+    public Usuario listId(Long idUsuario) {
         return uR.findById(idUsuario).orElse(new Usuario());
     }
+
 
     @Override
     public void update(Usuario u) {
@@ -35,9 +36,11 @@ public class UsuarioServiceImplement implements IUsuarioService {
     }
 
     @Override
-    public void delete(int idUsuario) {
+    public void delete(Long idUsuario) {
         uR.deleteById(idUsuario);
     }
+
+
 
 }
 

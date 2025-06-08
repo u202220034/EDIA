@@ -2,7 +2,6 @@ package pe.upc.edu.edia.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -14,11 +13,11 @@ public class Usuario implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idUsuario;
+    private Long idUsuario;
 
     @Column(length = 30, unique = true, nullable = false)
     private String username;
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+
     @Column(name = "Password", length = 200, nullable = false)
     private String password;
 
@@ -42,11 +41,30 @@ public class Usuario implements Serializable {
     @JoinColumn(name = "user_id")
     private List<TipoUsuario> tipoUsuarios;
 
-    public int getIdUsuario() {
+    public Usuario(Long idUsuario, String username, String password, String nombre, String apellidos, String correo, String dni, Boolean verificacion, List<TipoUsuario> tipoUsuarios) {
+        this.idUsuario = idUsuario;
+        this.username = username;
+        this.password = password;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.correo = correo;
+        this.dni = dni;
+        this.verificacion = verificacion;
+        this.tipoUsuarios = tipoUsuarios;
+    }
+
+    public Usuario(int idUsuario) {
+    }
+
+    public Usuario() {
+
+    }
+
+    public Long getIdUsuario() {
         return idUsuario;
     }
 
-    public void setIdUsuario(int idUsuario) {
+    public void setIdUsuario(Long idUsuario) {
         this.idUsuario = idUsuario;
     }
 

@@ -36,11 +36,4 @@ public class ComentarioController {
     }
     @DeleteMapping("/{idComentario}")
     public void eliminar(@PathVariable("idComentario")int idComentario) {comS.delete(idComentario);}
-
-    @GetMapping("/{idComentario}")
-    public ComentarioDTO listId(@PathVariable ("idComentario")int idComentario) {
-        ModelMapper modelMapper = new ModelMapper();
-        ComentarioDTO dto = modelMapper.map(comS.listId(idComentario), ComentarioDTO.class);
-        return dto;
-    }
 }

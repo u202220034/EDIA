@@ -1,5 +1,7 @@
 package pe.upc.edu.edia.dtos;
 
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import pe.upc.edu.edia.entities.Usuario;
 
 public class TipoUsuarioDTO {

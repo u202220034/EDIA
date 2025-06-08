@@ -7,7 +7,7 @@ import java.util.List;
 public interface IUsuarioService {
     public List<Usuario> list();
     public void insert(Usuario u);
-    public Usuario listId(int idUsuario);
+    public Usuario listId(Long idUsuario);
     public void update(Usuario u);
-    public void delete(int idUsuario);
+    public void delete(Long idUsuario);
 }

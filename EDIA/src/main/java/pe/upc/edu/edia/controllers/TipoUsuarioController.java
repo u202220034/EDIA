@@ -44,7 +44,7 @@ public class TipoUsuarioController {
         tuS.update(tu);
     }
     @DeleteMapping("/{idTipoUsuario}")
-    public void eliminar(@PathVariable("idTipoUsuario") int idTipoUsuario){ tuS.delete(idTipoUsuario); }
+    public void eliminar(@PathVariable("idTipoUsuario") Integer idTipoUsuario){ tuS.delete(idTipoUsuario); }
 
 
 

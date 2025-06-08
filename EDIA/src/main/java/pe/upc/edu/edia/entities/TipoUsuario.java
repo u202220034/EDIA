@@ -8,18 +8,19 @@ import jakarta.persistence.*;
 public class TipoUsuario {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private int id;
+    private int idTipoUsuario;
+    @Column(name="tipoUsuario", nullable=false)
     private String tipoUsuario;
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private Usuario usuario;
 
-    public int getId() {
-        return id;
+    public int getIdTipoUsuario() {
+        return idTipoUsuario;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdTipoUsuario(int idTipoUsuario) {
+        this.idTipoUsuario = idTipoUsuario;
     }
 
     public String getTipoUsuario() {
