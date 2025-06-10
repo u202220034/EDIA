@@ -28,6 +28,12 @@ public class ComentarioController {
         Comentario com = modelMapper.map(comDTO, Comentario.class);
         comS.insert(com);
     }
+    @GetMapping("/{idComentario}")
+    public ComentarioDTO listId(@PathVariable ("idComentario")int idComentario) {
+        ModelMapper modelMapper = new ModelMapper();
+        ComentarioDTO dto = modelMapper.map(comS.listId(idComentario), ComentarioDTO.class);
+        return dto;
+    }
     @PutMapping
     public void modificar(@RequestBody ComentarioDTO comDTO) {
         ModelMapper modelMapper = new ModelMapper();

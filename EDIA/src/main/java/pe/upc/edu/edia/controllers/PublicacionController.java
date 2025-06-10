@@ -3,6 +3,7 @@ package pe.upc.edu.edia.controllers;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import pe.upc.edu.edia.dtos.ForoDTO;
 import pe.upc.edu.edia.dtos.PublicacionDTO;
 import pe.upc.edu.edia.dtos.comentariosConTitulosPublicacionDTO;
 import pe.upc.edu.edia.entities.Publicacion;
@@ -29,6 +30,12 @@ public class PublicacionController {
         ModelMapper modelMapper = new ModelMapper();
         Publicacion pub = modelMapper.map(pubDTO, Publicacion.class);
         pubS.insert(pub);
+    }
+    @GetMapping("/{idPublicacion}")
+    public PublicacionDTO listId(@PathVariable ("idPublicacion")int idPublicacion) {
+        ModelMapper m = new ModelMapper();
+        PublicacionDTO dto = m.map(pubS.listId(idPublicacion), PublicacionDTO.class);
+        return dto;
     }
     @PutMapping
     public void modificar(@RequestBody PublicacionDTO pubDTO) {

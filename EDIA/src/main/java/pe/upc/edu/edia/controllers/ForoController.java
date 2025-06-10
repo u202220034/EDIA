@@ -32,6 +32,13 @@ public class ForoController {
         Foro f = m.map(forDTO,Foro.class);
         forS.insert(f);
     }
+    @GetMapping("/{idForo}")
+    public ForoDTO listId(@PathVariable ("idForo") int idForo) {
+        ModelMapper m = new ModelMapper();
+        ForoDTO dto = m.map(forS.ListId(idForo), ForoDTO.class);
+        return dto;
+    }
+
     @PutMapping
     public void modificar(@RequestBody ForoDTO forDTO) {
         ModelMapper m = new ModelMapper();
