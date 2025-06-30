@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="Curso")
@@ -22,6 +24,8 @@ public class Curso {
     @ManyToOne
     @JoinColumn(name ="CategoriaCurso_idCategoria")
     private Categoria categoria;
+    @OneToMany(mappedBy = "curso", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<UsuarioCurso> usuarioCursos = new ArrayList<>();
 
     public Curso() {}
 

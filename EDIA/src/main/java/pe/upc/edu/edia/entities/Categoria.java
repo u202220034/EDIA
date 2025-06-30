@@ -2,6 +2,9 @@ package pe.upc.edu.edia.entities;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name="Categoria")
 public class Categoria {
@@ -11,6 +14,9 @@ public class Categoria {
 
     @Column(name="nombreCategoria", nullable = false, length = 30)
     private String nombreCategoria;
+    @OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Curso> cursos = new ArrayList<>();
+
 
     public Categoria() {}
 

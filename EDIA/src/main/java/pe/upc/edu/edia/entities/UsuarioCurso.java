@@ -21,15 +21,14 @@ public class UsuarioCurso{
     @Column(name="Estatus_Curso", nullable = false)
     private BigDecimal Estatus_Curso;
 
-    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "idUsuario")
     private Usuario usuario;
 
-    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "idCurso")
     private Curso curso;
+
 
     public UsuarioCurso(int idUsuarioCurso, Date fechaInicio, BigDecimal estatus_Curso, Usuario usuario, Curso curso) {
         this.idUsuarioCurso = idUsuarioCurso;
