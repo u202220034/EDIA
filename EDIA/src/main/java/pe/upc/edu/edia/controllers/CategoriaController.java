@@ -2,6 +2,7 @@ package pe.upc.edu.edia.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.upc.edu.edia.dtos.CategoriaDTO;
 import pe.upc.edu.edia.entities.Categoria;
@@ -16,6 +17,7 @@ public class CategoriaController {
     @Autowired
     private ICategoriaService caS;
     @GetMapping
+    //@PreAuthorize("hasAnyAuthority('ADMIN','ESTUDIANTE')")
     public List<CategoriaDTO> listar() {
         return caS.list().stream().map(x -> {
             ModelMapper m = new ModelMapper();
@@ -23,6 +25,8 @@ public class CategoriaController {
         }).collect(Collectors.toList());
     }
     @PostMapping
+    //@PreAuthorize("hasAuthority('ADMIN')")
+
     public void registrar(@RequestBody CategoriaDTO cadto){
         ModelMapper m = new ModelMapper();
         Categoria a = m.map(cadto, Categoria.class);
@@ -35,6 +39,8 @@ public class CategoriaController {
         return dto;
     }
     @PutMapping
+    //@PreAuthorize("hasAuthority('ADMIN')")
+
     public void modificar(@RequestBody CategoriaDTO cadto){
         ModelMapper m = new ModelMapper();
         Categoria ca = m.map(cadto, Categoria.class);

@@ -50,7 +50,7 @@ public class ProyectoController {
     }
 
     @GetMapping("/EncontrarProyectoporUsuarios")
-    @PreAuthorize("hasAuthority('ADMIN')")
+    //@PreAuthorize("hasAuthority('ADMIN')")
     public List<EncontrarProyectoporUsuarioDTO> EncontrarProyectoporUsuario() {
         List<String[]> lista=pS.encontrarProyectos();
         List<EncontrarProyectoporUsuarioDTO> listaDto=new ArrayList<>();

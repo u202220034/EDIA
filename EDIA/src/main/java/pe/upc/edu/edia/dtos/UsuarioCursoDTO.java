@@ -1,5 +1,6 @@
 package pe.upc.edu.edia.dtos;
 
+import jakarta.persistence.*;
 import pe.upc.edu.edia.entities.Curso;
 import pe.upc.edu.edia.entities.Usuario;
 
@@ -9,10 +10,15 @@ import java.util.Date;
 public class UsuarioCursoDTO {
 
     private int idUsuarioCurso;
+
+
     private Date FechaInicio;
+
+    private int EstadoCurso;
+
     private Usuario usuario;
+
     private Curso curso;
-    private BigDecimal Estatus_Curso;
 
     public int getIdUsuarioCurso() {
         return idUsuarioCurso;
@@ -30,6 +36,14 @@ public class UsuarioCursoDTO {
         FechaInicio = fechaInicio;
     }
 
+    public int getEstadoCurso() {
+        return EstadoCurso;
+    }
+
+    public void setEstadoCurso(int estadoCurso) {
+        EstadoCurso = estadoCurso;
+    }
+
     public Usuario getUsuario() {
         return usuario;
     }
@@ -44,13 +58,5 @@ public class UsuarioCursoDTO {
 
     public void setCurso(Curso curso) {
         this.curso = curso;
-    }
-
-    public BigDecimal getEstatus_Curso() {
-        return Estatus_Curso;
-    }
-
-    public void setEstatus_Curso(BigDecimal estatus_Curso) {
-        Estatus_Curso = estatus_Curso;
     }
 }
