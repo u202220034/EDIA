@@ -63,6 +63,15 @@ public class WebSecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(req -> req
                         .requestMatchers(antMatcher("/Inicio_de_Sesion")).permitAll()
+                        .requestMatchers(antMatcher("/categoria/**")).permitAll()
+                        .requestMatchers(antMatcher("/cursos/**")).permitAll()
+                        .requestMatchers(antMatcher("/proyectos/**")).permitAll()
+                        .requestMatchers(antMatcher("/usuarioscursos/**")).permitAll()
+                        .requestMatchers(antMatcher("/tipousuarios/**")).permitAll()
+                        .requestMatchers(antMatcher("/usuarios/**")).permitAll()
+
+
+
 
                         // permite swagger:
                         .requestMatchers(

@@ -39,15 +39,16 @@ public class UsuarioCursoController {
         UsuarioCurso uc= modelMapper.map(ucDTO, UsuarioCurso.class);
         ucS.update(uc);
     }
+    @GetMapping("/{idUsuariCurso}")
+    public UsuarioCursoDTO ListarId(@PathVariable ("idUsuariCurso")int idUsuariCurso){
+        ModelMapper m = new ModelMapper();
+        UsuarioCursoDTO dto = m.map(ucS.listId(idUsuariCurso), UsuarioCursoDTO.class);
+        return dto;
+    }
     @DeleteMapping("/{idUsuarioCurso}")
     public void eliminar(@PathVariable("idUsuarioCurso")int idUsuarioCurso) {ucS.delete(idUsuarioCurso);}
 
-    @GetMapping("/{idUsuariCursos}")
-    public UsuarioCursoDTO ListarUsuarioCursos(@PathVariable ("idUsuarioCursos")int idUsuariCursos){
-        ModelMapper m = new ModelMapper();
-        UsuarioCursoDTO dto = m.map(ucS.listId(idUsuariCursos), UsuarioCursoDTO.class);
-        return dto;
-    }
+
 
     @GetMapping("/CantidadEstudianteporCurso")
     //@PreAuthorize("hasAuthority('ADMIN')")

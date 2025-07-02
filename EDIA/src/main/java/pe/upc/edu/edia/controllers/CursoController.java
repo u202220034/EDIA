@@ -16,7 +16,7 @@ public class CursoController {
     @Autowired
     private ICursoService curS;
     @GetMapping
-    @PreAuthorize("hasAuthority('ADMIN')")
+    //@PreAuthorize("hasAnyAuthority('ADMIN', 'ESTUDIANTE')")
     public List<CursoDTO> Listar(){
         return curS.list().stream().map(x -> {
             ModelMapper m = new ModelMapper();
@@ -29,7 +29,7 @@ public class CursoController {
         Curso a = m.map(curDTO, Curso.class);
         curS.insert(a);
     }
-    @GetMapping("/{idCursos}")
+    @GetMapping("/{idCurso}")
     public CursoDTO ListarCursos(@PathVariable ("idCurso")int idCurso){
         ModelMapper m = new ModelMapper();
         CursoDTO dto = m.map(curS.listId(idCurso), CursoDTO.class);
