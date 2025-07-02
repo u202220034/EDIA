@@ -26,7 +26,7 @@ public class UsuarioController {
     PasswordEncoder passwordEncoder;
 
     @GetMapping
-    @PreAuthorize("hasAuthority('ADMIN')")
+    //@PreAuthorize("hasAuthority('ADMIN')")
     public List<UsuarioDTO> listar() {
         return uS.list().stream().map(x->{
             ModelMapper modelMapper = new ModelMapper();

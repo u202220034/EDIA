@@ -18,8 +18,8 @@ public class UsuarioCurso{
     @Column(name="FechaInicio", nullable = false)
     private Date FechaInicio;
 
-    @Column(name="Estatus_Curso", nullable = false)
-    private BigDecimal Estatus_Curso;
+    @Column(name="EstadoCurso", nullable = false)
+    private int EstadoCurso;
 
     @ManyToOne
     @JoinColumn(name = "idUsuario")
@@ -29,11 +29,10 @@ public class UsuarioCurso{
     @JoinColumn(name = "idCurso")
     private Curso curso;
 
-
-    public UsuarioCurso(int idUsuarioCurso, Date fechaInicio, BigDecimal estatus_Curso, Usuario usuario, Curso curso) {
+    public UsuarioCurso(int idUsuarioCurso, Date fechaInicio, int estadoCurso, Usuario usuario, Curso curso) {
         this.idUsuarioCurso = idUsuarioCurso;
         FechaInicio = fechaInicio;
-        Estatus_Curso = estatus_Curso;
+        EstadoCurso = estadoCurso;
         this.usuario = usuario;
         this.curso = curso;
     }
@@ -58,12 +57,12 @@ public class UsuarioCurso{
         FechaInicio = fechaInicio;
     }
 
-    public BigDecimal getEstatus_Curso() {
-        return Estatus_Curso;
+    public int getEstadoCurso() {
+        return EstadoCurso;
     }
 
-    public void setEstatus_Curso(BigDecimal estatus_Curso) {
-        Estatus_Curso = estatus_Curso;
+    public void setEstadoCurso(int estadoCurso) {
+        EstadoCurso = estadoCurso;
     }
 
     public Usuario getUsuario() {
