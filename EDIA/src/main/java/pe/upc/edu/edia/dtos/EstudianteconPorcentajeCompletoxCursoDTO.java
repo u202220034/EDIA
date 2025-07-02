@@ -3,31 +3,31 @@ package pe.upc.edu.edia.dtos;
 import java.math.BigDecimal;
 
 public class EstudianteconPorcentajeCompletoxCursoDTO {
-    private String username;
-    private String Curso;
-    private BigDecimal porcentajeCompletado;
+    private String nombrecurso;
+    private int cantidadestudiantes;
+    private BigDecimal promediocompletado;
 
-    public String getUsername() {
-        return username;
+    public String getNombrecurso() {
+        return nombrecurso;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setNombrecurso(String nombrecurso) {
+        this.nombrecurso = nombrecurso;
     }
 
-    public String getCurso() {
-        return Curso;
+    public int getCantidadestudiantes() {
+        return cantidadestudiantes;
     }
 
-    public void setCurso(String curso) {
-        Curso = curso;
+    public void setCantidadestudiantes(int cantidadestudiantes) {
+        this.cantidadestudiantes = cantidadestudiantes;
     }
 
-    public BigDecimal getPorcentajeCompletado() {
-        return porcentajeCompletado;
+    public BigDecimal getPromediocompletado() {
+        return promediocompletado;
     }
 
-    public void setPorcentajeCompletado(BigDecimal porcentajeCompletado) {
-        this.porcentajeCompletado = porcentajeCompletado;
+    public void setPromediocompletado(BigDecimal promediocompletado) {
+        this.promediocompletado = promediocompletado;
     }
 }

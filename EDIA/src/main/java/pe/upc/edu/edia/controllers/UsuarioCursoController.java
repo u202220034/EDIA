@@ -50,7 +50,7 @@ public class UsuarioCursoController {
     }
 
     @GetMapping("/CantidadEstudianteporCurso")
-    @PreAuthorize("hasAuthority('ADMIN')")
+    //@PreAuthorize("hasAuthority('ADMIN')")
     public List<CantidadEstudiantesporCursoDTO> CantidadEstudiantes(){
         List<String[]> lista=ucS.cantidadusuarioxcurso();
         List<CantidadEstudiantesporCursoDTO> listaDto=new ArrayList<>();
@@ -64,16 +64,17 @@ public class UsuarioCursoController {
         return listaDto;
     }
     @GetMapping("/AlumnosconCursosCompletos")
-    @PreAuthorize("hasAuthority('ADMIN')")
+    //@PreAuthorize("hasAuthority('ADMIN')")
     public List<EstudianteconPorcentajeCompletoxCursoDTO> EstudiantesconcursoCompletos() {
         List<String[]> lista=ucS.porcentajeCompletado();
         List<EstudianteconPorcentajeCompletoxCursoDTO> listaDto=new ArrayList<>();
         for (String[] columna : lista){
             EstudianteconPorcentajeCompletoxCursoDTO dto=new EstudianteconPorcentajeCompletoxCursoDTO();
-            dto.setUsername(columna[0]);
-            dto.setCurso(columna[1]);
-            String porcentajeLimpio = columna[2].replace("%", "").trim();
-            dto.setPorcentajeCompletado(new BigDecimal(porcentajeLimpio));
+            dto.setNombrecurso(columna[0]);
+            String porcentajeLimpio = columna[1].replace("%", "").trim();
+            dto.setPromediocompletado(new BigDecimal(porcentajeLimpio));
+            dto.setCantidadestudiantes(Integer.parseInt(columna[2]));
+
             listaDto.add(dto);
         }
         return listaDto;
