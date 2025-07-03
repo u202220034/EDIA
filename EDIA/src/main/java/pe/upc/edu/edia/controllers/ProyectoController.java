@@ -2,10 +2,9 @@ package pe.upc.edu.edia.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.upc.edu.edia.dtos.CantidadProyectoporUsuarioDTO;
-import pe.upc.edu.edia.dtos.EncontrarProyectoporUsuarioDTO;
+import pe.upc.edu.edia.dtos.CantidadProyectosporFechaCreacionDTO;
 import pe.upc.edu.edia.dtos.ProyectoDTO;
 import pe.upc.edu.edia.entities.Proyecto;
 import pe.upc.edu.edia.servicesinterfaces.IProyectoService;
@@ -49,22 +48,22 @@ public class ProyectoController {
         pS.delete(idProyecto);
     }
 
-    @GetMapping("/EncontrarProyectoporUsuarios")
+    @GetMapping("/CantidadProyectosporFechas")
     //@PreAuthorize("hasAuthority('ADMIN')")
-    public List<EncontrarProyectoporUsuarioDTO> EncontrarProyectoporUsuario() {
-        List<String[]> lista=pS.encontrarProyectos();
-        List<EncontrarProyectoporUsuarioDTO> listaDto=new ArrayList<>();
+    public List<CantidadProyectosporFechaCreacionDTO> proyectosPorFechaCreacion() {
+        List<String[]> lista=pS.proyectosPorFechaCreacion();
+        List<CantidadProyectosporFechaCreacionDTO> listaDto=new ArrayList<>();
         for (String[] columna : lista){
-            EncontrarProyectoporUsuarioDTO dto=new EncontrarProyectoporUsuarioDTO();
-            dto.setUsername(columna[0]);
-            dto.setNombreProyecto(columna[1]);
+            CantidadProyectosporFechaCreacionDTO dto=new CantidadProyectosporFechaCreacionDTO();
+            dto.setMes(columna[0]);
+            dto.setTotalProyectos(Integer.parseInt(columna[1]));
             listaDto.add(dto);
         }
         return listaDto;
     }
 
     @GetMapping("/CantidadProyectosUsus")
-    @PreAuthorize("hasAuthority('ADMIN')")
+    //@PreAuthorize("hasAuthority('ADMIN')")
     public List<CantidadProyectoporUsuarioDTO> CantidadProyectos(){
         List<String[]> lista=pS.CantidadProyectosporUsuario();
         List<CantidadProyectoporUsuarioDTO> ctlistaDto=new ArrayList<>();
