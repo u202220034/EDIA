@@ -40,8 +40,8 @@ public class ProyectoServiceImplement implements IProyectoService {
     }
 
     @Override
-    public List<String[]> encontrarProyectos() {
-        return pR.encontrarproyectosporUsuario();
+    public List<String[]> proyectosPorFechaCreacion() {
+        return pR.proyectosPorFechaCreacion();
     }
 
     @Override
