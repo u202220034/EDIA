@@ -31,8 +31,8 @@ public class TipoUsuarioController {
         TipoUsuario a = m.map(tudto, TipoUsuario.class);
         tuS.insert(a);
     }
-    @GetMapping("/{idTipoUsuario}")
-    public TipoUsuarioDTO listarId(@PathVariable("idTipoUsuario") int idTipoUsuario){
+    @GetMapping("/{idTipoUsuarios}")
+    public TipoUsuarioDTO listarId(@PathVariable("idTipoUsuarios") int idTipoUsuario){
         ModelMapper m = new ModelMapper();
         TipoUsuarioDTO dto = m.map(tuS.listId(idTipoUsuario), TipoUsuarioDTO.class);
         return dto;
