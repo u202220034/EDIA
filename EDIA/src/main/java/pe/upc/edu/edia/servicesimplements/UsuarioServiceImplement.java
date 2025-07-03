@@ -39,8 +39,8 @@ public class UsuarioServiceImplement implements IUsuarioService {
     @Override
     public void delete(int idUsuario) {
         uR.deleteById(idUsuario);
-    }
 
+    }
 
 
 }

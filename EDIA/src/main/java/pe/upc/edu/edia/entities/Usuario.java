@@ -53,16 +53,15 @@ public class Usuario implements Serializable {
         this.tipoUsuarios = tipoUsuarios;
     }
 
-
     public Usuario() {
 
     }
 
-    public int  getIdUsuario() {
+    public int getIdUsuario() {
         return idUsuario;
     }
 
-    public void setIdUsuario(int  idUsuario) {
+    public void setIdUsuario(int idUsuario) {
         this.idUsuario = idUsuario;
     }
 
