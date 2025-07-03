@@ -6,12 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
-import pe.upc.edu.edia.dtos.EncontrarProyectoporUsuarioDTO;
 import pe.upc.edu.edia.dtos.UsuarioDTO;
 import pe.upc.edu.edia.entities.Usuario;
 import pe.upc.edu.edia.servicesinterfaces.IUsuarioService;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -49,6 +47,7 @@ public class UsuarioController {
     }
     @DeleteMapping("/{idUsuario}")
     public void eliminar(@PathVariable("idUsuario") int idUsuario) { uS.delete(idUsuario); }
+
     @GetMapping("/{idUsuarios}")
     public UsuarioDTO ListarUsuarios(@PathVariable ("idUsuarios")int idUsuarios) {
         ModelMapper m = new ModelMapper();
