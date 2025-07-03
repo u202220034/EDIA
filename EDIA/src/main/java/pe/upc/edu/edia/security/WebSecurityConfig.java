@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -60,7 +59,6 @@ public class WebSecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
-        //Desde Spring Boot 3.1+
         httpSecurity
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(req -> req
@@ -70,7 +68,7 @@ public class WebSecurityConfig {
                         .requestMatchers(antMatcher("/proyectos/**")).permitAll()
                         .requestMatchers(antMatcher("/usuarioscursos/**")).permitAll()
                         .requestMatchers(antMatcher("/tipousuarios/**")).permitAll()
-
+                        .requestMatchers(antMatcher("/usuarios/**")).permitAll()
                         .requestMatchers(AUTH_WHITELIST).permitAll()
                         .anyRequest().authenticated()
                 )
@@ -81,6 +79,7 @@ public class WebSecurityConfig {
         httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
         return httpSecurity.build();
     }
+
     private static final String[] AUTH_WHITELIST={
             "/api/v1/auth/**",
             "/v3/api-docs/**",
@@ -89,4 +88,3 @@ public class WebSecurityConfig {
             "/swagger-ui.html"
     };
 }
-
